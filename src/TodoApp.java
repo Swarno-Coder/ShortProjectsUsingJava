@@ -22,12 +22,12 @@ public class TodoApp {
             scanner.nextLine(); // Consume the newline character
 
             switch (choice) {
-                case 1:
+                case 1 -> {
                     System.out.print("Enter the task to add: ");
                     String newTask = scanner.nextLine();
                     tasks.add(newTask);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.print("Enter the task number to remove: ");
                     int taskNumber = scanner.nextInt();
                     scanner.nextLine(); // Consume the newline character
@@ -36,13 +36,13 @@ public class TodoApp {
                     } else {
                         System.out.println("Invalid task number.");
                     }
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.println("Goodbye!");
                     scanner.close();
                     System.exit(0);
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+                }
+                default -> System.out.println("Invalid choice. Please try again.");
             }
         }
     }
