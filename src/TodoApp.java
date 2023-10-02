@@ -1,48 +1,60 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
-public class TodoApp {
+public class TodoList {
+    private LinkedList<String> tasks;
+
+    public TodoList() {
+        tasks = new LinkedList<>();
+    }
+
+    public void addTask(String task) {
+        tasks.add(task);
+    }
+
+    public void removeTask(int index) {
+        if(index >= 0 && index < tasks.size()) {
+            tasks.remove(index);
+        }
+    }
+
+    public void viewTasks() {
+        for(int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + tasks.get(i));
+        }
+    }
+
     public static void main(String[] args) {
-        ArrayList<String> tasks = new ArrayList<>();
+        TodoList todoList = new TodoList();
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("To-Do List:");
-            for (int i = 0; i < tasks.size(); i++) {
-                System.out.println((i + 1) + ". " + tasks.get(i));
-            }
-
-            System.out.println("\nOptions:");
-            System.out.println("1. Add Task");
-            System.out.println("2. Remove Task");
-            System.out.println("3. Quit");
-
+        while(true) {
+            System.out.println("1. Add task");
+            System.out.println("2. Remove task");
+            System.out.println("3. View tasks");
+            System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine(); // consume newline
 
-            switch (choice) {
-                case 1 -> {
-                    System.out.print("Enter the task to add: ");
-                    String newTask = scanner.nextLine();
-                    tasks.add(newTask);
-                }
-                case 2 -> {
+            switch(choice) {
+                case 1:
+                    System.out.print("Enter a task: ");
+                    String task = scanner.nextLine();
+                    todoList.addTask(task);
+                    break;
+                case 2:
                     System.out.print("Enter the task number to remove: ");
-                    int taskNumber = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
-                    if (taskNumber >= 1 && taskNumber <= tasks.size()) {
-                        tasks.remove(taskNumber - 1);
-                    } else {
-                        System.out.println("Invalid task number.");
-                    }
-                }
-                case 3 -> {
-                    System.out.println("Goodbye!");
-                    scanner.close();
-                    System.exit(0);
-                }
-                default -> System.out.println("Invalid choice. Please try again.");
+                    int index = scanner.nextInt();
+                    todoList.removeTask(index - 1);
+                    break;
+                case 3:
+                    todoList.viewTasks();
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please enter a number between 1 and 4.");
             }
         }
     }
