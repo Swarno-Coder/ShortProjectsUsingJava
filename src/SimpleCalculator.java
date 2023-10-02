@@ -1,14 +1,31 @@
 import java.util.Scanner;
 
 class Operations{
-    public double add(double a, double b){
-        return a+b;
+    public double add(int l){
+        double sum = 0;
+        double a;
+        for(int i = 0; i < l; i++){
+        System.out.println("Enter a number...");
+            a=sc.nextDouble();
+            sum=sum+a;
+        }
+        return sum ;
     }
     public double sub(double a, double b){
-        return a-b;
+        if(a>b)
+            return a-b;
+        else
+            return b-a;
     }
-    public double mul(double a, double b){
-        return a*b;
+    public double mul(int l){
+        double pro = 1;
+        double a;
+        for(int i = 0 ; i < l ; i++){
+            System.out.println("Enter a number...");
+            a=sc.nextDouble();
+            pro=pro*a;
+        }
+        return pro;
     }
     public double div(double a, double b){
         return a/b;
@@ -20,21 +37,21 @@ public class SimpleCalculator {
         Operations op = new Operations();
         Scanner sc = new Scanner(System.in);
         double a,b, answer=0;
-
+        int l;
+        
         System.out.println("Basic Calculator");
         while (true){
-            System.out.println("1. Addition");
-            System.out.println("2. Subtraction");
-            System.out.println("3. Multiplication");
-            System.out.println("4. Divition");
-            System.out.println("5. Exit");
+            System.out.println("Press 1 for Addition");
+            System.out.println("Press 2 for Subtraction");
+            System.out.println("Press 3 for Multiplication");
+            System.out.println("Press 4 for Divition");
+            System.out.println("Press 5 to Exit");
             int choice = sc.nextInt();
             switch (choice) {
                 case 1 -> {
-                    System.out.println("Enter two numbers:");
-                    a = sc.nextDouble();
-                    b = sc.nextDouble();
-                    answer = op.add(a, b);
+                    System.out.println("How many numbers do you want to add? :");
+                    l=sc.nextInt();
+                    answer = op.add(l);
                 }
                 case 2 -> {
                     System.out.println("Enter two numbers:");
@@ -43,10 +60,9 @@ public class SimpleCalculator {
                     answer = op.sub(a, b);
                 }
                 case 3 -> {
-                    System.out.println("Enter two numbers:");
-                    a = sc.nextDouble();
-                    b = sc.nextDouble();
-                    answer = op.mul(a, b);
+                    System.out.println("How many numbers do you want to multiply? :");
+                    l=sc.nextInt();
+                    answer = op.mul(l);
                 }
                 case 4 -> {
                     System.out.println("Enter two numbers:");
