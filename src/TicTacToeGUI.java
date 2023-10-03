@@ -137,7 +137,7 @@ public class TicTacToeGUI extends JFrame {
             statusLabel.setText("Player " + currentPlayer + "'s turn");
         }
     }
-
+    //Main method to run the file
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TicTacToeGUI());
     }
